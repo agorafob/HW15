@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Database {
 
     private static final String[][] one =
@@ -136,10 +138,20 @@ public class Database {
         }
     }
 
-    public static void print(int numberToPrint) {
-        String[] str = String.valueOf(numberToPrint).split("");
-        printDeepString(getNewArray(str));
-
+    public static void print(String s) {
+        int counter = 0;
+        String[] str = s.split("");
+        for (int i = 0; i < str.length; i++) {
+            char c = str[i].charAt(0);
+            if (Character.isDigit(c)) {
+                counter++;
+            }
+        }
+        if (counter == str.length) {
+            printDeepString(getNewArray(str));
+        } else {
+            System.out.println("String is not a sequence of digits");
+        }
     }
 
 
